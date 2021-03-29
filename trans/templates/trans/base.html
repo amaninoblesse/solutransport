@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>acceuil</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+            <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MDBootstrap Datatables  -->
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+  </head>
+
+  <style>
+
+.btn-resultat{
+         margin-top: -10em;
+         background: #ff5f13;   }
+
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+  bottom: .5em;
+}
+
+  body {
+    background-image: url('/static/transport_deux.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+  .navbar{
+        background-color: rgb(245, 168, 26);
+    }
+          .btn-resultat{
+         margin-top: -10em;
+         background: rgb(245, 168, 26);   }
+
+  </style>
+  <body>
+      <header> <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#" style="color: black;"><strong>Dida Transport</strong></a>
+        
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+        
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'trans:acceuil' %}" style="color: black;"><strong>Acceuil</strong> 
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="contact" style="color: black;"><strong>Contacts</strong></a>
+                </li>
+
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color:black"><strong>Espace client</strong></a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#!">S'inscrire</a>
+                    <a class="dropdown-item" href="#!">Se connecter</a>
+                </div>
+                </li>
+        
+            </ul>
+            <!-- Links -->
+        
+            <form class="form-inline">
+                <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Recherche" aria-label="Search">
+                </div>
+            </form>
+            </div>
+            <!-- Collapsible content -->
+        
+        </nav>
+        <!--/.Navbar-->
+    </header>
+
+    <div class="wrapper">
+
+    {% block content %}
+    {% endblock %}
+    </div>
+
+
+
+                 <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+<!-- MDBootstrap Datatables  -->
+<script type="text/javascript" src="js/addons/datatables.min.js"></script>
+
+<script>
+
+  $("#btn-resultat").on("click",function(e){
+     
+
+      var ok = `<tr>
+                <th class="th-sm white-text " style="text-align: center;" id ="compagnie">Compagnie
+                </th>
+                <th class="th-sm white-text" style="text-align: center;" id="localisation">localisation
+                </th>
+                <th class="th-sm white-text" style="text-align: center;" id="depart" >Départ
+                </th>
+                <th class="th-sm white-text" style="text-align: center;" id = "place">Nombre de places
+                </th>
+              </tr>`;
+
+    $("#tableContainer").append(ok);
+
+    var un =`<tr><td class="white-text" style="text-align: center;"><a href="{% url 'trans:home' %}" class="white-text">Dida Transport</a></td><td class="white-text" style="text-align: center;">adjamé</td><td class="white-text"style="text-align: center;">1er départ(4h00)</td><td class="white-text" style="text-align: center;">31/60</td></tr>`;
+      var deux =`<tr><td class="white-text" style="text-align: center;">Waraba</td><td class="white-text" style="text-align: center;">adjamé</td><td class="white-text"style="text-align: center;">1er départ(4h00)</td><td class="white-text" style="text-align: center;">52/65</td></tr>`
+      var trois = `<tr><td class="white-text" style="text-align: center;">TTF</td><td class="white-text" style="text-align: center;">adjamé</td><td class="white-text"style="text-align: center;">1er départ(4h00)</td><td class="white-text" style="text-align: center;">48/50</td></tr>`
+      var four = `<tr><td class="white-text" style="text-align: center;">TCF</td><td class="white-text" style="text-align: center;">adjamé</td><td class="white-text"style="text-align: center;">1er départ(4h00)</td><td class="white-text" style="text-align: center;">28/45</td></tr>`
+      var sixe = `<tr><td class="white-text" style="text-align: center;">UTB</td><td class="white-text" style="text-align: center;">adjamé</td><td class="white-text"style="text-align: center;">2iéme départ(6h00)</td><td class="white-text" style="text-align: center;">15/60</td></tr>`
+      var sept =`<tr><td class="white-text" style="text-align: center;">TTF</td><td class="white-text" style="text-align: center;">adjamé</td><td class="white-text"style="text-align: center;">2ième départ(6h00)</td><td class="white-text" style="text-align: center;">13/35</td></tr>`
+      var huit =`<tr><td class="white-text" style="text-align: center;">TCF</td><td class="white-text" style="text-align: center;">adjamé</td><td class="white-text"style="text-align: center;">2ième départ(6h00)</td><td class="white-text" style="text-align: center;">10/30</td></tr>`
+
+
+$('#tableContainer').append(un);
+$('#tableContainer').append(deux);
+$('#tableContainer').append(trois);
+$('#tableContainer').append(four);
+$('#tableContainer').append(sixe);
+$('#tableContainer').append(sept);
+$('#tableContainer').append(huit);
+      });
+
+     
+
+
+     
+  
+  </script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+ 

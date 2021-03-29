@@ -1,0 +1,102 @@
+{% extends 'trans/base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mt-5 ">
+
+            <h1 class="mx-5 white-text" >Voyage(s) effectué(s)</h1>
+
+<table id="dtBasicExample" class="table table-striped table-bordered table-sm "   style="margin-right: 15%; background-color: black;"  cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th class="th-sm white-text " style="text-align: center;">Départ
+        </th>
+        <th class="th-sm white-text" style="text-align: center;">Destination
+        </th>
+        <th class="th-sm white-text" style="text-align: center;">Compagnie utilisée
+        </th>
+        <th class="th-sm white-text" style="text-align: center;">Date
+        </th>
+       
+      </tr>
+    </thead>
+    <tbody>
+   
+      <tr>
+        <td class="white-text" style="text-align: center;">abidjan</td>
+        <td class="white-text" style="text-align: center;">Toumodi</td>
+        <td class="white-text"style="text-align: center;">Dida Transport</td>
+        <td class="white-text" style="text-align: center;">02//01/2021</td>
+     
+      </tr>
+
+      <tr>
+        <td class="white-text" style="text-align: center;">Toumodi</td>
+        <td class="white-text" style="text-align: center;">Bouaké</td>
+        <td class="white-text"style="text-align: center;">UTB</td>
+        <td class="white-text" style="text-align: center;">14//01/2021</td>
+      </tr>
+
+      <tr>
+        <td class="white-text" style="text-align: center;">Bouaké</td>
+        <td class="white-text" style="text-align: center;">abidjan</td>
+        <td class="white-text"style="text-align: center;">TCF</td>
+        <td class="white-text" style="text-align: center;">26//01/2021</td>
+      </tr>
+   
+    </tbody>
+  
+  </table>
+
+  <form>
+
+    <div class="form-row mt-5">
+        <div class="form-group col-md-6">
+            <label for="ville" class="white-text">Entrez votre position actuelle(ville)</label>
+            <input type="text" class="form-control black-text" id="ville" placeholder="Dimbokro">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="dest" class="white-text text-center">Entrez votre destination(ville)</label>
+            <input type="text" class="form-control black-text" id="dest" placeholder="Toumodi">
+        </div>
+        <div class="form-group col-md-6">
+            <button type="button" class="btn btn-resultat btn-md black-text " style="margin-top: 12%;"id="btn-resultat" >Valider</button>
+        </div>
+    </div>
+
+    </form>
+</div>
+
+    <div class="col-lg-6">
+
+        <table id="dtBasicExample" class="table table-striped table-bordered table-sm " id="tableContainer" style="margin-left: 10%; background-color: black;margin-top: 20%;"  cellspacing="0" width="100%">
+            <thead class="black white-text">
+                <!--
+                   <tr>
+                   <th scope="col">Sommet 1</th>
+                   <th scope="col">Sommet 2</th>
+                   <th scope="col">poids de l'arrête</th>
+                 </tr>
+                 -->
+               </thead>
+               <tbody id="tableContainer" style="background-color: black;">
+               </tbody>
+          </table>
+
+
+
+
+    </div>
+
+</div>
+</div>
+
+
+
+
+{%  endblock %}
+
+ 

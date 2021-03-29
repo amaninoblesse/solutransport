@@ -1,0 +1,496 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>acceuil</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+            <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <style>
+     
+    body {
+      background-image: url('/static/infoooo.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+    .navbar{
+          background-color: rgb(245, 168, 26);
+      }
+    </style>
+
+  <body> <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#" style="color: black;"><strong>Dida Transport</strong></a>
+    
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+    
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+            <a class="nav-link" href="{% url 'trans:acceuil' %}" style="color: black;"><strong>Acceuil</strong> 
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="contact" style="color: black;"><strong>Réservation</strong></a>
+            </li>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="color:black"><strong>Contact</strong></a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="">mail</a>
+                <a class="dropdown-item" href="">numero</a>
+            </div>
+            </li>
+    
+        </ul>
+            <!-- Links -->
+        
+            <form class="form-inline">
+                <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Recherche" aria-label="Search">
+                </div>
+            </form>
+            </div>
+            <!-- Collapsible content -->
+        
+        </nav>
+        <!--/.Navbar-->
+		
+
+   <!-- JQuery -->
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <!-- Bootstrap tooltips -->
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+   <!-- Bootstrap core JavaScript -->
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+   <!-- MDB core JavaScript -->
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+   <script>
+
+		
+			/* Text to Speech */
+			/* ************** */
+			
+			if(navigator.userAgent.toLowerCase().indexOf('chrome') != -1) var flagChrome = true;
+			else  var flagChrome = false;
+			
+			// -------------------
+			// Variables générales
+			// -------------------
+			
+			var synth;
+			var utt;
+			var totalElapsedTime = 0;
+			var refLangValue = "fr-FR";
+			
+			var pitchValue = 1;
+			var rateValue = 1;
+			var volumeValue = 1;
+
+			var currentVoiceLang = "fr-FR"; // lang
+			var currentVoiceTheme = ""; // name
+			var currentVoicelocalService = "";
+			var currentVoiceURI = "";
+			
+			var currentPitchValue = 1;
+			var currentRateValue = 1;
+			var currentVolumeValue = 1;
+			
+			var flgOnvoiceschanged = false;
+			
+			// ---------------------
+			// Fonctions principales
+			// ---------------------
+
+			// Initialisation de la synthèse
+			// -----------------------------
+
+			function initSynthese(){
+				try{
+					synth = window.speechSynthesis;
+					utt = new SpeechSynthesisUtterance();
+					
+					synth.onvoiceschanged= function(event) {
+						displayInfo("Evènement <b>onvoiceschanged</b> reçu de l'objet <b>initSynthese</b>. Mise à jour de la table des langues.","informations"); 
+						afficheVoixDisponible();
+						flgOnvoiceschanged = true;
+					}
+					return true;
+				}
+				catch(e) {return false;}
+			}
+			
+			// Initialisation de l'utterance
+			// -----------------------------
+			function setUtterance(_lang,_voiceTheme,_volume,_pitch,_rate){
+				try{
+					utt.volume = _volume; // 0 à 1
+					utt.pitch = _pitch; //0 à 2
+					utt.rate = _rate; // 0.1 à 10
+				
+					var flagVoiceOK = false;
+					synth.getVoices().forEach(function(voice) {
+						if(voice.lang === _lang && voice.name === _voiceTheme) {
+							utt.voice = voice;
+							flagVoiceOK = true;
+						}
+					});
+					
+					if(!flagVoiceOK) {
+						var reponse = confirm("La voix demandée '" + _lang + "' n'est pas disponible." + "\n" + "Voulez vous continuer ?");     
+						if (reponse) {return true;}     
+						else {return false;} 
+					}
+					return true;
+				}
+				catch(e){displayInfo("<b>Attention</b><br /><span class='DisplayErr'>Erreur d'initialisation utterance : " + e,'informations');}
+			}
+			
+			// Initialisation des évènements de l'utterance
+			// --------------------------------------------
+			function setUtteranceEvents(){
+				try{
+					// Initialisation des évènements
+					
+					utt.onend = function(event) {
+						totalElapsedTime += event.elapsedTime;
+						displayInfo('Fin de la synthèse(onend)<br />Durée (<b>event.elapsedTime</b>) ' + totalElapsedTime + ' millisecondes.','informations');
+						clearTimeout(timeoutResumeInfinity); // truc pour les messages supérieurs à 250 caractères
+					} 
+					
+					utt.onerror = function(event) { displayInfo('Erreur durant le rendu vocal (onerror)','informations'); }
+					
+					utt.onstart = function(event) { 
+						resumeInfinity(); // truc pour les messages supérieurs à 250 caractères
+						displayInfo('Démarrage de la synthèse (onstart)','informations'); 
+					}
+					
+					utt.onpause = function(event) {  // Non reçu actuellement
+						displayInfo( 'Mise en pause (onpause)','informations');
+						var char = event.utterance.text.charAt(event.charIndex);
+						displayInfo("Pause à l'index " + event.charIndex + " ( caractère " + char + " ) du texte <span style='color:gray'>" + event.utterance.text +"</span>","informations");
+					}
+					
+					utt.onresume = function(event) {   // Non reçu actuellement
+						displayInfo('Fin de pause (onresume)','informations'); 
+					}
+					
+				}
+				catch(e){displayInfo("<span class='DisplayErr'>Erreur d'initialisation des évènement de utterance : " + e,'informations');}
+			}
+			
+			// Démarrage de la synthèse
+			// ------------------------
+			function parle(texte){
+				try{
+					totalElapsedTime = 0;
+					if(initSynthese()){ // initSynthese dans cette phase pour faire plaisir à Firefox
+						setUtterance(currentVoiceLang,currentVoiceTheme,currentVolumeValue,currentPitchValue,currentRateValue);
+						setUtteranceEvents();
+						utt.text = texte;
+						synth.speak(utt);
+					}
+					else displayInfo("<span class='DisplayErr'>Erreur survenue dans l'initialisation du système : " + e,"informations");
+				}
+				catch(e){displayInfo("<span class='DisplayErr'>Erreur survenue sur initialisation de la commande speak : " + e,"informations");}
+			}	
+			
+			// Commande de la synthèse
+			// -----------------------
+				// Mise en pause
+			function miseEnPause(){
+				try{
+					synth.pause();
+					clearTimeout(timeoutResumeInfinity); // truc pour les messages supérieurs à 250 caractères
+					displayInfo("<span class='DisplayOK'>Commande de mise en <b>Pause</b></span>","informations");
+				}
+				catch(e){displayInfo("<span class='DisplayWarning'>Méthode non supportée pour cette voix. " + e + "</span>","informations");};
+			}
+				// Fin de pause
+			function miseEnResume(){ 
+				try{
+					resumeInfinity();						
+					synth.resume();
+					displayInfo("<span  class='DisplayOK'>Commande de fin de <b>Pause</b></span>","informations");
+				}
+				catch(e){displayInfo("<span class='DisplayWarning'>Méthode non supportée pour cette voix. " + e + "</span>","informations");};
+			}
+				// Fin synthèse
+			function miseEnCancel(){
+				try{if(synth.speaking){synth.cancel();displayInfo("<span class='DisplayOK'>Commande <b>cancel</b></span>","informations");} else displayInfo("<span class='DisplayErr'>Pas de synthèse en cours</span>","informations");}
+				catch(e){displayInfo("<span class='DisplayWarning'>Méthode non supportée pour cette voix. " + e + "</span>","informations");};
+			}
+			
+			// Supervision des états
+			// -----------------------
+			var tSup = 0;
+			function starSupervision(){tSup = setInterval("afficheSupervision()",10);}
+			function afficheSupervision(){
+				document.getElementById('Speaking').innerHTML = synth.speaking;
+				document.getElementById('Pending').innerHTML = synth.pending;
+				document.getElementById('Paused').innerHTML = synth.paused;
+			}
+			
+		// -------------------------------------------------------------------------------
+		// -------------------------------------------------------------------------------
+			
+			// ---------------------
+			// Fonctions utilitaires
+			// ---------------------
+			 // truc pour les messages supérieurs à 250 caractères
+			function resumeInfinity() {
+				window.speechSynthesis.resume();
+				timeoutResumeInfinity = setTimeout(resumeInfinity, 1000);
+			}
+			
+			// Texte prédéfini
+			// ---------------
+			var myShortStrToSpeak = "je suis le petit train qui roule dans la rosée du matin";
+			var droitHommeToSpeak = "Considérant que la reconnaissance de la dignité inhérente à tous les membres de la famille humaine et de leurs droits égaux et inaliénables .";
+			droitHommeToSpeak += "Considérant que la méconnaissance et le mépris des droits de l'homme ont conduit à des actes de barbarie qui révoltent la conscience.";
+			droitHommeToSpeak += "Considérant qu'il est essentiel que les droits de l'homme soient protégés par un régime de droit pour que l'homme ne soit pas contraint, en suprême recours, à la révolte contre la tyrannie et l'oppression.";
+			
+			var tableVoixDisponibles = new Array();
+			 
+			// Affichage des voix disponibles
+			// ------------------------------
+			function afficheVoixDisponible(){
+			try{
+				var voiceName = "";
+				var voiceLang = "";
+				var voiceLocalService = "";
+				var voiceVoiceURI = "";
+				document.getElementById("lesVoix").innerHTML = "";
+				
+				var x = document.getElementById("ReglageLang"); 
+				var y = document.getElementById("ReglageTexture");
+				var flagLangFr = false;
+				var i = 0;
+				document.getElementById("nbVoixDispo").innerHTML = synth.getVoices().length;
+		
+				synth.getVoices().forEach(function(voice) {
+					if(voice.lang != ""){
+						// Mise à jour de la table 
+						tableVoixDisponibles[i] = {"indice":i,"lang":voice.lang,"name":voice.name,"URI":voice.voiceURI,"localService":voice.localService};
+						i++;
+					}	
+				});
+			
+				var style = "";
+				var res = "<table class='tblVD'>";
+				res += "<tr><th>Nom générique (name)</th><th style='white-space:nowrap'>Langue (lang)</th><th>localService</th><th>voiceURI</th></tr>";
+
+				for (i in tableVoixDisponibles){
+					if(tableVoixDisponibles[i].lang === refLangValue) {
+						currentVoiceLang = tableVoixDisponibles[i].lang;
+						currentVoiceTheme = tableVoixDisponibles[i].name;
+						currentVoicelocalService = tableVoixDisponibles[i].localService;
+						currentVoiceURI = tableVoixDisponibles[i].URI;
+
+						flagLangFr = true;
+					}
+
+					
+					res += 	"<tr class='itemsDeVoix'><td id='v_" + i + "1'  onclick='selLang(this.id);'>" + tableVoixDisponibles[i].name + "</td>";
+					res += 	"<td id='v_" + i + "2'  onclick='selLang(this.id);'>" + tableVoixDisponibles[i].lang + "</td>";
+					res += 	"<td id='v_" + i + "3'  onclick='selLang(this.id);'>" + tableVoixDisponibles[i].localService + "</td>";
+					res += 	"<td id='v_" + i + "4'  onclick='selLang(this.id);'>" + tableVoixDisponibles[i].URI + "</td></tr>";
+				}
+				res += "</table>";
+
+				document.getElementById("lesVoix").innerHTML = res;
+				updateCurrentLangAndVoice();
+				if (!flagLangFr) displayInfo("<span class='DisplayWarning'>Pas de langue française dans la liste des voix proposées par ce navigateur.","informations");
+				else displayInfo("Langue française reconnue.","informations");
+				document.getElementById("wait").style.display = "none";
+			}
+			catch(e){document.getElementById("wait").style.display = "none";displayInfo("<span class='DisplayErr'>Erreur survenue dans la fonction <b>afficheVoixDisponible()</b> : " + e,"informations");}
+			}
+
+			 // Sélection du langage à partir du tableau proposé
+			 // ------------------------------------------------
+			function selLang(_id){
+				_id = _id.substr(0, (_id.length)-1);
+				currentVoiceTheme = document.getElementById(_id + "1").innerHTML;
+				currentVoiceLang = document.getElementById(_id + "2").innerHTML;
+				currentVoicelocalService = document.getElementById(_id + "3").innerHTML;
+				currentVoiceURI = document.getElementById(_id + "4").innerHTML;
+				updateCurrentLangAndVoice();
+			}
+			
+			// Test de compatibilité
+			// ---------------------
+			function testCompatibilite(type){
+				// type = "Synthesis" test uniquement text to speech
+				// type = "Recognition" test uniquement reconnaissance vocale
+				// type = "Both" test complet
+				// Test si les fonctions seront suppotées par le navigateur
+				var res = 0;
+				var info = "Défauts constatés sur votre navigateur concernant la synthèse vocale :" + "<br />";
+				var tabAlert = new Array(
+					'- Reconnaissance vocale non reconnu par votre navigateur.',
+					'- Synthèse vocale non reconnu par votre navigateur.',
+					'- Synthèse vocale : moteur de rendu non reconnu par votre navigateur.',
+					'- Synthèse vocale : le navigateur renvoie une liste vide des voix disponibles.'
+				)
+				if(type == "Recognition" || type == "Both") {
+					if (!('webkitSpeechRecognition' in window)) {res = res + 1;}
+				}
+						
+				if(type == "Synthesis" || type == "Both") {
+					if (!('speechSynthesis' in window)) {res = res + 2;}
+					if (!('SpeechSynthesisUtterance' in window)) {res = res + 4;};
+					if (
+						('speechSynthesis' in window) && 
+						(window.speechSynthesis.getVoices().length < 1)
+					) {res = res + 8;};
+				}
+				switch(res){
+					case 0:break;
+					case 1:info += tabAlert[0];break;
+					case 2:info += tabAlert[1];break;
+					case 3:info += tabAlert[0] + "<br />" + tabAlert[1];break;
+					case 4:info += tabAlert[2];break;
+					case 5:info += tabAlert[1] + "<br />" + tabAlert[3];break;
+					case 6:info += tabAlert[1] + "<br />" + tabAlert[2];break;
+					case 7:info += tabAlert[0] + "<br />" + tabAlert[1] + "<br />" + tabAlert[2];break;
+					case 8:info += tabAlert[3];break;
+					case 9:info += tabAlert[0] + "<br />" + tabAlert[3];break;
+					case 10:break;
+					case 11:break;
+					case 12:info += tabAlert[2] + "<br />" + tabAlert[3];break;
+					case 13:info += tabAlert[0] + "<br />" + tabAlert[2] + "<br />" + tabAlert[3];break;
+					case 14:break;
+					case 15:break;
+				}
+				if (res == 0) return true;
+				else {
+					info = "<span class='DisplayErr'>" + info + "</span>";
+					displayInfo(info,"informations");
+					return false;
+				}
+			}
+					
+			// Lancement de la synthèse
+			// ------------------------
+			function startToSpeak(strToSpeak){
+				if(strToSpeak == "") {displayInfo("<span class='DisplayErr' >Le champ texte à synthétiser est vide !</span>","informations");return;}
+				if(!testCompatibilite("Synthesis")){return;}
+				else parle(strToSpeak);
+			}
+				
+					
+			// Affichage des informations
+			// --------------------------
+			function displayInfo(_info,_id){
+				var x = document.getElementById(_id);
+				x.innerHTML = MaDate() + _info + "<hr />"  + x.innerHTML;
+			}
+								
+			// Date 
+			function MaDate(){
+				var LaDate = new Date();
+				return "<span style='color:white'>" + LaDate.getHours() + ":" + LaDate.getMinutes() + ":" + LaDate.getSeconds() + ":" +  LaDate.getMilliseconds() + " </span>";
+			}		
+			
+			// Mise à jour des infos langage courant
+			// -------------------------------------
+			function updateCurrentLangAndVoice(){
+				document.getElementById("currentTheme").innerHTML = currentVoiceTheme;
+				document.getElementById("currentLang").innerHTML = currentVoiceLang;
+			}
+			
+ 			// Déclenchement aprés fin de chargement de la page
+			// ------------------------------------------------
+			function loadPage(){
+				if(initSynthese())
+				{
+					starSupervision();
+					attend(2000);
+					document.getElementById("wait").style.display = "none";
+					if (!'onvoiceschanged' in speechSynthesis) {
+						displayInfo("<span class='DisplayWarning'>l\'évènement <b>onvoiceschanged</b> n'est pas reconnu par ce navigateur.</span>","informations");
+						afficheVoixDisponible();
+					}
+					else {
+						if(!flgOnvoiceschanged) 
+							{
+								displayInfo("<span class='DisplayWarning'>l\'évènement <b>onvoiceschanged</b> est reconnu par ce navigateur, mais n'a pas été envoyé.</span>","informations");
+								afficheVoixDisponible();
+							}
+					}
+				}
+				else {
+					document.getElementById("wait").style.display = "none";
+					alert("Erreur d'initialisation : window.speechSynthesis ne s'initialise pas. Aucune synthèse vocale ne sera possible avec ce navigateur.");
+				}
+			}
+			
+			function attend(ms){
+				var d = new Date();
+				var d2 = null;
+				do { d2 = new Date(); }
+				while(d2-d < ms);
+			}
+			//-->
+		</script>
+
+	</head>
+	<body id="body" onload="loadPage()">
+	
+		<script>document.write(boutonsDemo("../JVS_SyntheseVocale.php#TTS"));</script>
+
+	      <!--
+			<div class="container orange-text" style="padding-right: 60%; margin-top: 10%;">
+			<div style="text-align:center;font-size:1.5em">Explication => Procédure de la mairie </div>-->
+
+			
+
+         <div class="row">
+			<div class="rubrique mt-3 " style="margin-left: 82%;">
+				<input class="inputTexte" id ="textToSpeak" placeholder="Selectionner l'un d'entre ces options" type="text" style="width:30px; background-color: gray;" /> 
+				<input style="text-align:center;background-color:gray" type="button" onclick="document.getElementById('textToSpeak').value= 'Soyez la bienvenue sur la plateforme de la gare Dida Transport Vous avez maintenant la possiblité de reservé votre place pour un confortable voyage sans toutefois vous rendre à la gare En effet il vous suffit juste de consulter les departs et vehicules disponibles puis soumettre un formulaire de demande vous permettant donc de reservé votre place de votre position et faire partir du depart nous vous offrons encore plus de service pour vous faciliter l\'envoi des collis et le voyage pour plus d\'info rendez vous sur l\'espace info ou contactez nous au 42 66 27 16 merci de nous faire confiance';" value = "Procédure" />
+				<input style="text-align:center;background-color:gray" type="button" onclick="document.getElementById('textToSpeak').value= 'Cette plateforme est le fruit de la solution de l\'etudiant amani kouakou noé C\'est un etudiant très passioné par l\'informatic et innovant Il est auteur de plusieurs solutions digitales parmi leskelles figurent la plateforme de la gare Dida Transport sur lakelle vous etes actuellement il envisage des solutions innovantes dans tous les domaines en vue de faciliter la vie de l\'etre humain pour plus d\' informations rendez vous sur sa page facebook amani kouakou noe';" value = "auteur" />
+			</div>
+		
+			<div class="rubrique " style="margin-top: 34%; margin-left: 5%;">
+				<input type="button" class="btn btn-warning black-text " style="font-size: 20px;"  onclick ="startToSpeak(document.getElementById('textToSpeak').value);"  value="Parlez (speak())" />
+				<input id="btPause" class="btn btn-warning black-text "  style="font-size: 20px;"  type="button" onclick ="miseEnPause();"  value="Pause (pause())" />
+				<input type="button" class="btn btn-warning black-text "  style="font-size: 20px;"  onclick ="miseEnResume();"  value="Fin pause (resume())" />
+				<input type="button" class="btn btn-warning black-text " style="font-size: 20px;"  onclick ="miseEnCancel();"  value="Tout arrêter (cancel())" />
+	
+		   </div>
+		</div>
+
+		</div>
+	</div>
+		<script>
+			updateCurrentLangAndVoice();
+			document.write(wait);
+		</script>
+  </body>
+</html>
+

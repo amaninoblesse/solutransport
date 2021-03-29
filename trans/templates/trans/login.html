@@ -1,0 +1,188 @@
+{% load static %}
+
+
+<!DOCTYPE html> 
+<html> 
+  
+<head> 
+    <title>TRANSPORT</title>
+    <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+</head> 
+  <style>
+      .navbar{
+          background-color: rgb(245, 168, 26);
+      }
+      .btn-valide{
+          background-color: rgb(245, 168, 26);
+     }
+     .btn-resultat{
+         margin-top: -10em;
+         background: black;     }
+
+      body {
+    background-image: url('/static/transport_deux.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+  </style>
+  
+ 
+<body> 
+    <header>
+     <!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark ">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#" style="color: black;"><strong>Dida Transport</strong></a>
+  
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+  
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'trans:acceuil' %}" style="color: black;"><strong>Acceuil</strong>
+        
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="" style="color: black;"><strong>Contacts</strong></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="" style="color: black;"><strong>Info</strong></a>
+        </li>
+  
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" style="color: black;"><trong>Info plus</trong></a>
+          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'homeG' %}">Le fonctionnement de la gare</a>
+            <a class="dropdown-item" href="{% url 'trans:info_client' %}">client/voyageur</a>
+            <a class="dropdown-item" href="#">agent</a>
+          </div>
+        </li>
+  
+      </ul>
+      <!-- Links -->
+  
+      <form class="form-inline">
+        <div class="md-form my-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Recherche" style="color: black;" aria-label="Search">
+        </div>
+      </form>
+    </div>
+    <!-- Collapsible content -->
+  
+  </nav>
+  <!--/.Navbar-->
+    </header>
+   
+   <div class="container mt-5" >
+  <!-- Card -->
+<div class="card card-cascade wider reverse">
+
+    <!-- Card image -->
+    <div class="view view-cascade overlay">
+      
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+  
+    <!-- Card content -->
+    
+  
+  </div>
+  <!-- Card -->
+</div> 
+
+<!--Modal: Login with Avatar Form-->
+<div class="modal fade" id="modalLoginAvatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Header-->
+      <div class="modal-header">
+        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg" alt="avatar" class="rounded-circle img-responsive">
+      </div>
+      <!--Body-->
+      <div class="modal-body text-center mb-1">
+
+        <h5 class="mt-1 mb-2">GERARDINE FRANCINE</h5>
+
+        <div class="md-form ml-0 mr-0">
+          <input type="password" name="password" type="text" id="form29" class="form-control form-control-sm validate ml-0">
+          <label data-error="wrong" data-success="right" for="form29" class="ml-0">Entrez votre mot de passe</label>
+        </div>
+
+        <div class="text-center mt-4">
+       <a href="{% url 'trans:client_deux' %}"> 
+          <button class="btn btn-valide mt-1">Login <i class="fas fa-sign-in ml-1"></i></button>
+        </a>
+        </div>
+      </div>
+
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: Login with Avatar Form-->
+
+<div class="text-center">
+  <a href="" class="btn btn-resultat btn-rounded mt-5 white-text " data-toggle="modal" data-target="#modalLoginAvatar">Etes vous vraiment l'agent ? </a>
+</div>
+
+
+
+
+   <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+<script>
+
+</script>
+
+<script>
+    $(".btn-valide").on("click",function(e){
+        var agent = $("#form29").val();
+        $.ajax({
+            url :"{% url 'trans:client_deux' %}",
+            data : {
+                'agent' : agent
+            },
+            type:'GET'
+        });
+    });
+</script>
+
+</body>
+
+
+</html>
+

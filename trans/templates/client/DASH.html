@@ -1,0 +1,648 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin, bootstrap 4, css3 dashboard, bootstrap 4 dashboard, AdminWrap lite admin bootstrap 4 dashboard, frontend, responsive bootstrap 4 admin template, Xtreme admin lite design, Xtreme admin lite dashboard bootstrap 4 dashboard template">
+    <meta name="description"
+        content="Xtreme Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>VOYAGE</title>
+    
+    <!-- Favicon icon -->
+   
+    <!-- Custom CSS -->
+    <link href="{% static 'assets/libs/chartist/dist/chartist.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'assets/dist/css/style.min.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}">
+
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %} ">
+    <link rel="stylesheet" href="{% static 'assets/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+   
+</head>
+
+<body>
+    
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" data-navbarbg="skin5">
+            <div class="row align-items-center">
+    
+                <div class="col-xl-2 col-lg-2 col-md-1">
+                <div class="logo">
+                
+                <a href="index-2.html" class="big-logo"><img src="{% static 'assets/img/logo/Capture3.PNG' %}" alt="" style="width: 90%;"></a>
+                
+                </div>
+                </div>
+            </div>
+            
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <!-- User Profile-->
+                        <li>
+                            <!-- User Profile-->
+                            <div class="user-profile d-flex no-block dropdown m-t-20">
+                                <div class="user-pic"><img src="{% static 'assets/images/users/1.jpg' %}" alt="users"
+                                        class="rounded-circle" width="40" /></div>
+                                <div class="user-content hide-menu m-l-10">
+                                    <a href="javascript:void(0)" class="" id="Userdd" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <h5 class="m-b-0 user-name font-medium">SAFIATOU <i
+                                                class="fa fa-angle-down"></i></h5>
+                                    
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Userdd">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End User Profile-->
+                        </li>
+                        <li class="p-15 m-t-10"><a class="btn"  data-toggle="modal" href="#modal-edit" aria-expanded="false">Reservation</a>
+                        </li>
+                        <!-- User Profile-->
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                                    class="hide-menu">Tableau de bord</span></a></li>
+
+
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="" aria-expanded="false"><i
+                                    class="mdi mdi-account-network"></i><span class="hide-menu">Profile</span></a></li>
+
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
+                                    class="hide-menu">Les departs</span></a></li>
+
+
+                
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="" aria-expanded="false"><i class="mdi mdi-file"></i><span
+                                    class="hide-menu">deconnexion</span></a></li>
+
+                    
+                        <li class="text-center p-40 upgrade-btn">
+                            <a href=""
+                                class="btn btn-block btn-danger text-white" target="_blank">deconnexion</a>
+                        </li>
+                    </ul>
+
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-5">
+                        <h4 class="page-title">Bienvenue</h4>
+                        <div class="d-flex align-items-center">
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">VOS VOYAGES EFFECTUES</h4>
+                                        
+                                    </div>
+                        
+                                </div>
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table class="table v-middle">
+                                            <thead>
+                                                <tr class="bg-light">
+                                                    <th class="border-top-0">DEPART</th>
+                                                    <th class="border-top-0">DESTINATION</th>
+                                                    <th class="border-top-0">COMPAGNIE</th>
+                                                    <th class="border-top-0">DATE</th>
+                                                    
+                                                </tr>
+                                                <td>Abidjan</td>
+                                                <td>toumodi</td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                       
+                                                        <div class="">
+                                                            <h4 class=" btn m-b-0 font-16">utb</h4>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>12/12/2020</td>
+                                                
+                                            </thead>
+                                   </table>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Guide de temps</h4>
+                                <div class="d-flex align-items-center flex-row m-t-30">
+                                    <div class="display-5 text-info"><i class="wi wi-day-showers"></i>
+                                        <span>35<sup>°</sup></span></div>
+                                    <div class="m-l-10">
+                                        <h3 class="m-b-0">lundi</h3><small>Abidjan</small>
+                                    </div>
+                                </div>
+                                <ul class="row list-style-none text-center m-t-30">
+                                    <li class="col-3">
+                                        <h4 class="text-info"><i class="wi wi-day-sunny"></i></h4>
+                                        <span class="d-block text-muted">bouaké</span>
+                                        <h3 class="m-t-5">32<sup>°</sup></h3>
+                                    </li>
+                                    <li class="col-3">
+                                        <h4 class="text-info"><i class="wi wi-day-cloudy"></i></h4>
+                                        <span class="d-block text-muted">yakro</span>
+                                        <h3 class="m-t-5">33<sup>°</sup></h3>
+                                    </li>
+                                    <li class="col-3">
+                                        <h4 class="text-info"><i class="wi wi-day-hail"></i></h4>
+                                        <span class="d-block text-muted">bassam</span>
+                                        <h3 class="m-t-5">30<sup>°</sup></h3>
+                                    </li>
+                                    <li class="col-3">
+                                        <h4 class="text-info"><i class="wi wi-day-sprinkle"></i></h4>
+                                        <span class="d-block text-muted">korogho</span>
+                                        <h3 class="m-t-5">30<sup>°</sup></h3>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Table -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- title -->
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">les départs</h4>
+                                        <h5 class="card-subtitle"></h5>
+                                    </div>
+                                    
+                                </div>
+                                <!-- title -->
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table v-middle">
+                                    <thead>
+                                        <tr class="bg-light">
+                                            <th class="border-top-0">compagnie</th>
+                                            <th class="border-top-0">Localisation</th>
+                                            <th class="border-top-0">Départ</th>
+                                            <th class="border-top-0">nombre de place dispo</th>
+                                            <th class="border-top-0">prix</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="m-r-10"><a
+                                                            class="btn btn-circle d-flex btn-info text-white">dT</a>
+                                                    </div>
+                                                    <div class="">
+                                                        <a href="{% url 'trans:home' %}"><h4 class="m-b-0 font-16">DIDA TRANSPORT</h4></a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>adjamé</td>
+                                            
+                                            <td>
+                                                <label class="label label-info">1er départ(4h00)</label>
+                                            </td>
+                                            <td>31/60</td>
+                                            
+                                            <td>
+                                                <h5 class="m-b-0">5000f</h5>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="m-r-10"><a
+                                                            class="btn btn-circle d-flex btn-orange text-white">G</a>
+                                                    </div>
+                                                    <div class="">
+                                                        <h4 class="m-b-0 font-16">GTT</h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>TREICHVILLE</td>
+                                            
+                                            <td>
+                                                <label class="label label-danger">1er depart(7h30)</label>
+                                            </td>
+                                            <td>45/50</td>
+                                            
+                                            <td>
+                                                <h5 class="m-b-0">4000f</h5>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="m-r-10"><a
+                                                            class="btn btn-circle d-flex btn-orange text-white">war</a>
+                                                    </div>
+                                                    <div class="">
+                                                        <h4 class="m-b-0 font-16">waraba</h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>adjamé</td>
+                                            
+                                            <td>
+                                                <label class="label label-info">1er depart(6h00)</label>
+                                            </td>
+                                            <td>12/20</td>
+                                            
+                                            <td>
+                                                <h5 class="m-b-0">4000f</h5>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="m-r-10"><a
+                                                            class="btn btn-circle d-flex btn-orange text-white">TF</a>
+                                                    </div>
+                                                    <div class="">
+                                                        <h4 class="m-b-0 font-16">TTF</h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>adjamé</td>
+                                            
+                                            <td>
+                                                <label class="label label-danger">1er depart(6h00)</label>
+                                            </td>
+                                            <td>30/45</td>
+                                            
+                                            <td>
+                                                <h5 class="m-b-0">4000f</h5>
+                                            </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- Table -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Recent comment and chats -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">commentaires</h4>
+                            </div>
+                            <div class="comment-widgets scrollable">
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="p-2"><img src="{% static 'assets/images/users/1.jpg' %}" alt="user" width="50"
+                                            class="rounded-circle"></div>
+                                    <div class="comment-text w-100">
+                                        <h6 class="font-medium">fatou kone</h6>
+                                        <span class="m-b-15 d-block"> utb est chic oh </span>
+                                        <div class="comment-footer">
+                                            <span class="text-muted float-right"> 28/02/2021</span> <span
+                                                class="label label-rounded label-primary">Pending</span> <span
+                                                class="action-icons">
+                                                <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                <a href="javascript:void(0)"><i class="ti-heart"></i></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2"><img src="{% static 'assets/images/users/4.jpg' %}" alt="user" width="50"
+                                            class="rounded-circle"></div>
+                                    <div class="comment-text active w-100">
+                                        <h6 class="font-medium">Michael kouassi</h6>
+                                        <span class="m-b-15 d-block">moi j'ai pris dida transport et un vrai car climatisé moins chére en plus </span>
+                                        <div class="comment-footer ">
+                                            <span class="text-muted float-right">27/02/2021</span>
+                                            <span class="label label-success label-rounded">Approved</span>
+                                            <span class="action-icons active">
+                                                <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                <a href="javascript:void(0)"><i class="icon-close"></i></a>
+                                                <a href="javascript:void(0)"><i class="ti-heart text-danger"></i></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2"><img src="{% static 'assets/images/users/5.jpg' %}" alt="user" width="50"
+                                            class="rounded-circle"></div>
+                                    <div class="comment-text w-100">
+                                        <h6 class="font-medium">Johnathan Hien</h6>
+                                        <span class="m-b-15 d-block">MOI CE QUI ME PLAIT C'EST LE REMPLISSAGE VOCAL DU FORMULAIRE </span>
+                                        <div class="comment-footer">
+                                            <span class="text-muted float-right">04/02/2021/span>
+                                            <span class="label label-rounded label-danger">Rejected</span>
+                                            <span class="action-icons">
+                                                <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
+                                                <a href="javascript:void(0)"><i class="ti-check"></i></a>
+                                                <a href="javascript:void(0)"><i class="ti-heart"></i></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- column -->
+                    
+                </div>
+                <!-- ============================================================== -->
+                <!-- Recent comment and chats -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            
+
+            <div class="modal fade" id="modal-edit">
+                <div class="modal-dialog modal-lg ">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" align="center">Connexion</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      
+                      <div class="col-md-12 pr-3">
+                        <div class="form-group">
+                          <label for="matricule">entrez votre position actuelle(ville):</label>
+                          <input type="text"  class="form-control"  name=""  required>
+                        </div>
+                        <div class="form-group">
+                          <label for="matricule">entrez votre destination(ville):</label>
+                          <input type="text" class="form-control" name=""  required>
+                        </div>
+                        
+                      <div class="col-sm-12 mt-4 mb-4" align="center">
+                        <button type="submit" class="btn btn-lg btn-flat bg-gradient-success btn-theme" id="btn1"> <i class="fas fa-car"></i> valider</button>
+                      </div>
+                    </div>
+                    
+                  </form>
+
+                 
+                  <div class="table-responsive"  style="display:none; " id="my-secret">
+                    <table class="table v-middle">
+                        <thead>
+                            <tr class="bg-light">
+                                <th class="border-top-0">compagnie</th>
+                                <th class="border-top-0">Localisation</th>
+                                <th class="border-top-0">Départ</th>
+                                <th class="border-top-0">nombre de place disponible</th>
+                                <th class="border-top-0">prix</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="m-r-10"><a
+                                                class="btn btn-circle d-flex btn-info text-white">dT</a>
+                                        </div>
+                                        <div class="">
+                                            <a href="{% url 'trans:home' %}">
+                                            <h4 class="m-b-0 font-16">DIDA TRANSPORT</h4>
+                                        </a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>adjamé</td>
+                                
+                                <td>
+                                    <label class="label label-danger">1er départ(4h00)</label>
+                                </td>
+                                <td>31/60</td>
+                                
+                                <td>
+                                    <h5 class="m-b-0">5000f</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="m-r-10"><a
+                                                class="btn btn-circle d-flex btn-orange text-white">G</a>
+                                        </div>
+                                        <div class="">
+                                            <h4 class="m-b-0 font-16">GTT</h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>TREICHVILLE</td>
+                                
+                                <td>
+                                    <label class="label label-info">1er depart(7h30)</label>
+                                </td>
+                                <td>12/50</td>
+                                
+                                <td>
+                                    <h5 class="m-b-0">4000f</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="m-r-10"><a
+                                                class="btn btn-circle d-flex btn-orange text-white">war</a>
+                                        </div>
+                                        <div class="">
+                                            <h4 class="m-b-0 font-16">waraba</h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>adjamé</td>
+                                
+                                <td>
+                                    <label class="label label-info">1er depart(6h00)</label>
+                                </td>
+                                <td>12/20</td>
+                                
+                                <td>
+                                    <h5 class="m-b-0">4000f</h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="m-r-10"><a
+                                                class="btn btn-circle d-flex btn-orange text-white">TF</a>
+                                        </div>
+                                        <div class="">
+                                            <h4 class="m-b-0 font-16">TTF</h4>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>adjamé</td>
+                                
+                                <td>
+                                    <label class="label label-info">1er depart(6h00)</label>
+                                </td>
+                                <td>20/45</td>
+                                
+                                <td>
+                                    <h5 class="m-b-0">4000f</h5>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+                </div>
+              </div>
+            </div>
+             
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <footer class="footer text-center">
+               
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+
+
+    <script>
+ const ButtonClick = document.getElementById('btn1');
+
+ ButtonClick.addEventListener('click', () => {
+        console.log("jai clicquer !");
+        document.getElementById('my-secret').style.display = "block";
+    });
+    </script>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{% static 'assets/libs/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static 'assets/libs/popper.js/dist/umd/popper.min.js' %}"></script>
+    <script src="{% static 'assets/libs/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/dist/js/app-style-switcher.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static 'assets/dist/js/waves.js' %}"></script>
+    <!--Menu sidebar -->
+    <script src="{% static 'assets/dist/js/sidebarmenu.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static 'assets/dist/js/custom.js' %}"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="{% static '/libs/chartist/dist/chartist.min.js' %}"></script>
+    <script src="{% static 'assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js' %}"></script>
+    <script src="{% static 'assets/dist/js/pages/dashboards/dashboard1.js' %}"></script>
+</body>
+
+</html>

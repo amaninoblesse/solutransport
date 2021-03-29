@@ -1,0 +1,204 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>acceuil</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+            <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <style>
+  body {
+    background-image: url('/static/reservation.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+  .navbar{
+        background-color: rgb(245, 168, 26);
+    }
+          .btn-resultat{
+         margin-top: -10em;
+         background: rgb(245, 168, 26);   }
+
+  </style>
+  <body>
+      <header> <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+
+            <!-- Navbar brand -->
+            <a class="navbar-brand" href="#" style="color: black;"><strong>Dida Transport</strong></a>
+        
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+        
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="acceuil" style="color: black;"><strong>Acceuil</strong> 
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="contact" style="color: black;"><strong>Contacts</strong></a>
+                </li>
+
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false" style="color:black"><strong>Espace client</strong></a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#!">S'inscrire</a>
+                    <a class="dropdown-item" href="#!">Se connecter</a>
+                </div>
+                </li>
+        
+            </ul>
+            <!-- Links -->
+        
+            <form class="form-inline">
+                <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Recherche" aria-label="Search">
+                </div>
+            </form>
+            </div>
+            <!-- Collapsible content -->
+        
+        </nav>
+        <!--/.Navbar-->
+    </header>
+
+
+
+    <div class="row" style="margin-top: 10%;">
+    
+        <div class="col-lg-6">
+
+          <form>
+           <div class="form-row">
+               <div class="form-group col-md-6">
+                   <label for="nom" class="white-text">Nom</label>
+                   <input type="text" class="form-control white-text" id="nom" placeholder="Doudou">
+               </div>
+               <div class="form-group col-md-6">
+                   <label for="prenom" class="white-text">Prénom</label>
+                   <input type="text" class="form-control" id="prenom" placeholder="Roger">
+               </div>
+  
+              <div class="form-group col-md-6">
+                   <label for="numero" class="white-text">Numéro de téléphone</label>
+                   <input type="text" class="form-control" id="numero" placeholder="0142662716">
+              </div>
+  
+              <div class="form-group col-md-6">
+                <label for="inputState" class="white-text">Destination</label>
+                <select id="inputState" class="form-control">
+                  <option selected>Toumodi</option>
+                  <option>Bouaké</option>
+                  <option>Dimbokro</option>
+                  <option>Yamoussoukro</option>
+                </select>
+              </div>
+           
+    <div class="form-group col-md-4">
+      <label for="inputState" class="white-text">Départ</label>
+      <select id="inputState" class="form-control">
+        <option selected>1er Départ(4h-6h)</option>
+        <option>2ième Départ(07h-9h)</option>
+        <option>3ième Départ(10h-12h)</option>
+        <option>4ième Départ(14h-16h)</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState" class="white-text">Somme reçue</label>
+      <select id="inputState" class="form-control">
+        <option selected>2000f</option>
+        <option>5000f</option>
+        <option>10000f</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState" class="white-text">Sexe</label>
+      <select id="inputState" class="form-control">
+        <option selected>M</option>
+        <option>F</option>
+ 
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Enregistrer</button>
+</form>
+</div>
+        
+       
+
+        <div class="col-lg-6 mt-5">
+
+        <div class="row" style="border: white;border-style: solid;" >
+
+                <div class="col-lg-4">
+                      <a href="">
+                      <button type="button" class="btn btn-resultat btn-md black-text mt-4" >1er Départ</button></a></br>
+                      <p style="margin-left: 20%; color: black;">35/60</p> 
+                    </a>
+                </div> 
+
+                <div class="col-lg-4">
+                    <a href="">
+                        <button type="button" class="btn btn-resultat btn-md black-text mt-4">2ième Départ</button></br>
+                        <p style="margin-left: 20%; color: black;">15/60</p> 
+                      </a> 
+                </div>  
+
+                 <div class="col-lg-4">
+                    <a href="{% url 'trans:liste_client' %}">
+                        <button type="button" class="btn btn-resultat btn-md black-text mt-4">3ième Départ</button></br>
+                        <p style="margin-left: 20%; color:white;" >12/50</p> 
+                      </a> 
+                </div> 
+                
+                 
+
+            </div>
+        
+        </div>
+
+     </div>
+
+
+
+
+
+                 <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
+  </body>
+</html>
